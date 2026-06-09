@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Alarm Clock</title>
+    <link rel="stylesheet" href="alarm.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>⏰ Smart Alarm Clock</h1>
+            <p>Set multiple alarms and never miss an important moment</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Current Time Display -->
+            <div class="time-display">
+                <div class="current-time" id="currentTime">00:00:00</div>
+                <div class="current-date" id="currentDate">Loading...</div>
+            </div>
+
+            <!-- Alarm Creation Section -->
+            <div class="alarm-creation">
+                <h2>Create New Alarm</h2>
+                <div class="alarm-form">
+                    <div class="form-group">
+                        <label for="alarmTime">Alarm Time</label>
+                        <input type="time" id="alarmTime" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alarmLabel">Label</label>
+                        <input type="text" id="alarmLabel" placeholder="e.g., Morning Workout" maxlength="30">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alarmSound">Sound</label>
+                        <select id="alarmSound">
+                            <option value="default">Default Beep</option>
+                            <option value="bell">Bell</option>
+                            <option value="digital">Digital</option>
+                            <option value="alarm">Alarm</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="alarmRepeat">Repeat</label>
+                        <select id="alarmRepeat">
+                            <option value="never">Never</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekdays">Weekdays</option>
+                            <option value="weekends">Weekends</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-primary" onclick="addAlarm()">Add Alarm</button>
+                </div>
+            </div>
+
+            <!-- Alarms List Section -->
+            <div class="alarms-section">
+                <h2>Your Alarms</h2>
+                <div class="alarms-list" id="alarmsList">
+                    <p class="empty-state">No alarms set yet. Create your first alarm!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alarm Notification Modal -->
+    <div class="alarm-modal" id="alarmModal">
+        <div class="alarm-modal-content">
+            <div class="alarm-icon">🔔</div>
+            <h2 id="alarmTitle">Alarm!</h2>
+            <p id="alarmMessage">Wake up!</p>
+            <div class="alarm-modal-buttons">
+                <button class="btn btn-secondary" onclick="snoozeAlarm()">Snooze (5 min)</button>
+                <button class="btn btn-primary" onclick="dismissAlarm()">Dismiss</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements for Alarm Sounds -->
+    <audio id="defaultSound" preload="auto">
+        <source src="data:audio/wav;base64,UklGRiYAAABXQVZFZm10IBAAAAABAAEAQB8AAAB9AAACABAAZGF0YQIAAAAAAA==" type="audio/wav">
+    </audio>
+
+    <script src="alarm.js"></script>
+</body>
+</html>
